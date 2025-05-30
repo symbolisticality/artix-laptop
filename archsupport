@@ -1,0 +1,42 @@
+#!/bin/sh
+clear
+
+echo '
+
+[omniverse]
+Server = https://artix.sakamoto.pl/omniverse/$arch
+Server = https://eu-mirror.artixlinux.org/omniverse/$arch
+Server = https://omniverse.artixlinux.org/$arch' >> /etc/pacman.conf
+
+pacman -Sy
+pacman -S artix-archlinux-support
+
+echo '
+
+# Arch Linux repos
+
+
+#[testing]
+#Include = /etc/pacman.d/mirrorlist
+
+
+#[core]
+#Include = /etc/pacman.d/mirrorlist-arch
+
+
+[extra]
+Include = /etc/pacman.d/mirrorlist-arch
+
+
+#[multilib-testing]
+#Include = /etc/pacman.d/mirrorlist
+
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist-arch
+' >> /etc/pacman.conf
+
+clear
+
+pacman-key --populate archlinux
+pacman -Sy

@@ -1,0 +1,21 @@
+#!/bin/sh
+pacman -S libxft libx11 feh harfbuzz libxext libxrender libxinerama gd base-devel xorg xorg-xinit turnstile picom pulseaudio dbus alsa-utils flameshot noto-fonts-emoji wget ttf-hack ttf-mononoki-nerd pulseaudio-alsa pulsemixer cowsay unzip tar
+mkdir -p ~/.icons/default
+tar xvzf adwaita-cursors.tar.gz
+mv adwaita-cursors/Adwaita/cursors ~/.icons/default
+touch ~/.Xresources
+echo '
+Xcursor.theme: default
+Xcursor.size: 42
+' >> ~/.Xresources
+cd suckless/dwm
+make clean install
+cd ..
+cd st
+make clean install
+cd ..
+cd slstatus
+make clean install
+cd ..
+cd dmenu
+make clean install

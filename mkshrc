@@ -1,0 +1,11 @@
+#prompt
+. ~/scripts/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+PS1='${PWD/#$HOME/\~}$(__git_ps1 " (%s)")> '
+
+#startup
+fortune | cowsay
+
+#aliases
+alias c='clear'
+alias p='doas pacman'
